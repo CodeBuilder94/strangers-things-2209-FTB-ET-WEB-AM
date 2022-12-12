@@ -1,3 +1,14 @@
 body {
   font-family: verdana;
 }
+
+.itemPost{
+  border: solid black 1px ;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.postDetails{
+  margin-left: 5px;
+  margin-right: 5px;
+}
