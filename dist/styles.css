@@ -1,15 +1,54 @@
 body {
   font-family: verdana;
+  margin:0;
+}
+
+.Header{
+  background-color: blueviolet;
+}
+
+.Header > h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 1rem;
+  
+}
+
+nav{
+  display: flex;
+  justify-content: end;
+  background-color: violet;
+}
+nav > a{
+  margin-right: 1rem;
+  color: ghostwhite;
+  text-decoration: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .itemPost{
   border: solid black 1px ;
-  margin-top: 1rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 5px 5px 5px plum;
 }
 
 .postDetails{
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.postHeader{
+  background-color: blueviolet;
+}
+
+.postHeader > *{
+  margin-left: 1rem;
+  margin-top: 5px;
+  margin-bottom: 0;
+  
 }

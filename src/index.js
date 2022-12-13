@@ -31,6 +31,7 @@ const App = ()=> {
   }, [])
   return (
     <div>
+      <div className="Header">
       <h1>Strangers Things</h1>
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
@@ -38,6 +39,7 @@ const App = ()=> {
         <Link to='/login'>Login</Link>
         <Link to='/register'>Register</Link>
       </nav>
+      </div>
       <Routes>
         <Route path='/posts' element= {<Posts posts={posts}/>} />
         <Route path = '/profile' element={<div>Profile</div>}/>
