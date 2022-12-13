@@ -1,10 +1,12 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link} from 'react-router-dom';
+import {Posts} from './Components';
 
 
 const App = ()=> {
   const [posts, setPosts] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
   
   const URL_BASE =`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am`;
   const POSTS = `/posts`;
@@ -24,9 +26,7 @@ const App = ()=> {
       .then(response =>{
         return response.json();
       })
-      .then(json => {setPosts(json.data.posts)
-        console.log(json.data.posts);
-      });
+      .then(json => {setPosts(json.data.posts)});
 
   }, [])
   return (
@@ -34,23 +34,13 @@ const App = ()=> {
       <h1>Strangers Things</h1>
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
+        {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
         <Link to='/login'>Login</Link>
         <Link to='/register'>Register</Link>
       </nav>
       <Routes>
-        <Route path='/posts' element= {posts.map((post, idx) =>{
-          return <div key={idx} className="itemPost">
-            <div className="postDetails">
-              <h2 className="title">{post.title}</h2>
-              <h3 className="poster">User:{post.author.username}</h3>
-              <h3 className ="location">Location: {post.location}</h3>
-              <p className ="details"><em>Details:</em>{post.description}</p>
-              <p className="price">{post.price}</p>
-              <p className="createDate">{post.createdAt.slice()} @ {post.createdAt.slice(0,10)}</p>
-              <p className ="updateDate">{post.updatedAt.slice()} @ {post.updatedAt.slice(0,10)}</p>
-            </div>
-          </div>
-        })}/>
+        <Route path='/posts' element= {<Posts posts={posts}/>} />
+        <Route path = '/profile' element={<div>Profile</div>}/>
         <Route path='/login' element={ <div>Login</div>} />
         <Route path='/register' element={ <div>Register</div>} />
       </Routes> 
