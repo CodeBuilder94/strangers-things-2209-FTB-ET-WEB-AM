@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link} from 'react-router-dom';
-import {Posts} from './Components';
+import {Posts, Login} from './Components';
 
 
 const App = ()=> {
@@ -43,7 +43,7 @@ const App = ()=> {
       <Routes>
         <Route path='/posts' element= {<Posts posts={posts}/>} />
         <Route path = '/profile' element={<div>Profile</div>}/>
-        <Route path='/login' element={ <div>Login</div>} />
+        <Route path='/login' element={ <Login loggedIn={loggedIn}/>} />
         <Route path='/register' element={ <div>Register</div>} />
       </Routes> 
     </div>
