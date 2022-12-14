@@ -36,7 +36,7 @@ const App = ()=> {
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
-        <Link to='/login'>Login</Link>
+        <Link to='/login'>{}Login</Link>
         <Link to='/register'>Register</Link>
       </nav>
       </div>

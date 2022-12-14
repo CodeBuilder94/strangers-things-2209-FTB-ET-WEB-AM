@@ -1,5 +1,11 @@
 import React from "react";
 
+
+const PostDetail = ({post}) =>
+{
+
+}
+
 const Posts = (props) =>
 {
     const {posts} = props;
