@@ -54,6 +54,20 @@ nav > a{
   
 }
 
+.times{
+  display: flex;
+  justify-content: left;
+  font-size: 10px;
+}
+
+.updateDate{
+  margin-right: 1rem;
+}
+
+.createDate{
+  margin-right: 1rem;;
+}
+
 /*Login Page*/
 #login{
   display: flex;

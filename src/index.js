@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link} from 'react-router-dom';
 import {Posts, Login} from './Components';
 
-
 const App = ()=> {
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -36,7 +35,7 @@ const App = ()=> {
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
-        <Link to='/login'>{}Login</Link>
+        {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login">Logout</Link>}
         <Link to='/register'>Register</Link>
       </nav>
       </div>
@@ -45,6 +44,7 @@ const App = ()=> {
         <Route path = '/profile' element={<div>Profile</div>}/>
         <Route path='/login' element={ <Login loggedIn={loggedIn}/>} />
         <Route path='/register' element={ <div>Register</div>} />
+        <Route path ='/posts/:id' element={<div>Post info</div>}/>
       </Routes> 
     </div>
 
