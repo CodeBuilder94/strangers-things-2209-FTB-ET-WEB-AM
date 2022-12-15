@@ -44,7 +44,7 @@ const App = ()=> {
         <Route path = '/profile' element={<div>Profile</div>}/>
         <Route path='/login' element={ <Login loggedIn={loggedIn}/>} />
         <Route path='/register' element={ <div>Register</div>} />
-        <Route path ='/posts/:id' element={<div><PostDetail /></div>}/>
+        <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
       </Routes> 
     </div>
 
