@@ -2,10 +2,10 @@
 //import React from 'react';
 
 
-export const login = (ev) =>{
-
+export const login = async (ev) =>{
+    ev.preventDefault();
 }
 
-export const register = (ev) =>{
-    
+export const register = async (ev) =>{
+    ev.preventDefault();
 }

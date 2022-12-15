@@ -9,7 +9,7 @@ const Login =(props) =>
 
     //create a form to log in
     return <div>
-        <form className="login" onClick ={() => {preventDefault()}}>
+        <form className="login" onSubmit ={() => {preventDefault()}}>
             <input className="InUser" placeholder="Username" value ={loginUserName}></input>
             <input className="password" placeholder="Password"></input>
             <button>Login</button>

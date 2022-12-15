@@ -9,8 +9,7 @@ const Register =(props) =>
 
     //create a form to log in
     return <div>
-        <form className="login" onClick ={() => {
-            preventDefault()
+        <form className="login" onSubmit ={() => {
             //send info to account register function
             register();
             }}>
