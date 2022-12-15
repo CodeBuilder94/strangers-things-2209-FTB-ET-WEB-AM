@@ -6,6 +6,11 @@ import {Posts, Login, PostDetail} from './Components';
 const App = ()=> {
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = userState("");
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   
   const URL_BASE =`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am`;
   const POSTS = `/posts`;
@@ -42,8 +47,8 @@ const App = ()=> {
       <Routes>
         <Route path='/posts' element= {<Posts posts={posts}/>} />
         <Route path = '/profile' element={<div>Profile</div>}/>
-        <Route path='/login' element={ <Login loggedIn={loggedIn}/>} />
-        <Route path='/register' element={ <div>Register</div>} />
+        <Route path='/login' element={ <Login setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername}/>} />
+        <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
         <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
       </Routes> 
     </div>

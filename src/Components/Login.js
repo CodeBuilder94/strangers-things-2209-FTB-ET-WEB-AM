@@ -1,14 +1,17 @@
 import React from "react";
 
+//import login function from Account.js
+import {login} from './Account';
+
 const Login =(props) =>
 {
-    const {loggedIn} =props;
+    const {loggedIn, loginUserName, setLoginUserName, loginPassword, setLoginPassword} =props;
 
     //create a form to log in
     return <div>
-        <form id="login" onClick ={() => {preventDefault()}}>
-            <input id="InUser" placeholder="Username"></input><br></br>
-            <input id="password" placeholder="Password"></input><br></br>
+        <form className="login" onClick ={() => {preventDefault()}}>
+            <input className="InUser" placeholder="Username" value ={loginUserName}></input>
+            <input className="password" placeholder="Password"></input>
             <button>Login</button>
         </form>
     </div>

@@ -8,7 +8,7 @@ const Posts = (props) =>
     console.log(posts);
     return <ul>
         {
-        posts.map((post, idx) =>{
+        posts.map((post) =>{
         return <li key={post._id} className="itemPost"><Link to ={`/posts/${post._id}`}>{post.title}</Link></li>
             })
         }
