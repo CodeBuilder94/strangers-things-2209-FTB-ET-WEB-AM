@@ -2,11 +2,13 @@ import React from "react";
 
 const Login =(props) =>
 {
-    const {setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
+    const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
 
 
     const logIn = (ev) =>
   {
+    console.log("name:" + loginUsername + `password:  ${loginPassword}`)
+
     ev.preventDefault();
         fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/login', {
       method: "POST",
@@ -22,7 +24,7 @@ const Login =(props) =>
     })
     .then(response => response.json())
       .then(result => {
-
+        console.log(result);
         const token = result.data.token;
         console.log(token);
         window.localStorage.setItem("token", token);
@@ -53,7 +55,9 @@ const Login =(props) =>
             <input className="InUser" placeholder="Username" value ={loginUsername} onChange={ev =>setLoginUsername(ev.target.value)}></input>
             <input className="password" placeholder="Password" value={loginPassword} onChange={ev =>setLoginPassword(ev.target.value)}></input>
             <button>Login</button>
+            
         </form>
+        <div>{loginUsername}{loginPassword}</div>
     </div>
 }
 

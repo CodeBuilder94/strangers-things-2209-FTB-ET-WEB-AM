@@ -7,6 +7,7 @@ const Register = (props) =>
 
 
     const  register = (ev) =>{
+        console.log("name:" + registerUsername + `password:  ${registerPassword}`)
         ev.preventDefault();
         fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/register', {
             method: "POST",
