@@ -16,6 +16,12 @@ body {
   
 }
 
+#accountName{
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}
+
 nav{
   display: flex;
   justify-content: end;
