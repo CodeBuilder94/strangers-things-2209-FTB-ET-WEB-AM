@@ -57,7 +57,7 @@ const Login =(props) =>
             <button>Login</button>
             
         </form>
-        <div>{loginUsername}{loginPassword}</div>
+        <div>{loginUsername} test {loginPassword}</div>
     </div>
 }
 
