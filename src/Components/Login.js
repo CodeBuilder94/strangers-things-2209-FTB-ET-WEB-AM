@@ -55,9 +55,7 @@ const Login =(props) =>
             <input className="InUser" placeholder="Username" value ={loginUsername} onChange={ev =>setLoginUsername(ev.target.value)}></input>
             <input className="password" placeholder="Password" value={loginPassword} onChange={ev =>setLoginPassword(ev.target.value)}></input>
             <button>Login</button>
-            
         </form>
-        <div>{loginUsername} test {loginPassword}</div>
     </div>
 }
 
