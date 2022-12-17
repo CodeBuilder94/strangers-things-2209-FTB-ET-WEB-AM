@@ -1,14 +1,15 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";//Use useNamigate to move to a new page
 
 
 const Register = (props) =>
 {   
     const [badRegister, setBadRegister] = useState("");
-
+    const navigate = useNavigate();
     const {registerUsername, registerPassword, setRegisterUsername, setRegisterPassword} =props;
 
     const  register = (ev) =>{
-        console.log(ev);
+        
         ev.preventDefault();
         fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/register', {
             method: "POST",
@@ -23,15 +24,15 @@ const Register = (props) =>
             })
       }).then(response => response.json())
         .then(result => {
-          console.log(result);
+
          if(result.success ===false){
             setBadRegister(result.error.message);
-            setRegisterPassword("");
-            setRegisterUsername("");
           }
           else{
-            <Login />
+            setBadRegister(result.data.message);
           }
+          setRegisterPassword("");
+          setRegisterUsername("");
         })
         .catch(err => console.log(err));
 

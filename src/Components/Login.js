@@ -9,7 +9,6 @@ const Login =(props) =>
 
     const logIn = (ev) =>
   {
-    console.log(ev);
 
     ev.preventDefault();
         fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/login', {
@@ -26,11 +25,22 @@ const Login =(props) =>
     })
     .then(response => response.json())
       .then(result => {
-        console.log(result);
-        const token = result.data.token;
-        console.log(token);
-        window.localStorage.setItem("token", token);
+        console.log(result.error.message);
 
+        if(result.success ===false)
+        {
+          setBadLogin(result.error.message);
+        }
+        else{
+          setBadLogin(result.data.message);
+        }
+
+        setLoginPassword("");
+        setLoginUsername("");
+
+        const token = result.data.token;
+        window.localStorage.setItem("token", token);
+        
           fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/me', {
             headers: {
             'Content-Type': 'application/json',
@@ -41,14 +51,14 @@ const Login =(props) =>
             const user = result.data;
             setUser(user);
             setLoggedIn(true);
-            console.log(result);
+
+            
           })
           .catch(console.error);
 
           })
       .catch(err => console.log(err));
 
-      <Profile />
   }
 
 
