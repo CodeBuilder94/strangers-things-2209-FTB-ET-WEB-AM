@@ -79,7 +79,7 @@ nav > a{
   margin-right: 1rem;;
 }
 
-/*Login Page*/
+/*Login/Register Page*/
 .login{
   display: flex;
   flex-direction: column;
@@ -89,4 +89,8 @@ nav > a{
 
 form > input{
   height: 2rem;
+}
+
+.error{
+  color: red;
 }

@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link} from 'react-router-dom';
-import {Posts, Login, PostDetail, Register} from './Components';
+import {Posts, Login, PostDetail, Register, Profile} from './Components';
 
 const App = ()=> {
   const [posts, setPosts] = useState([]);
@@ -56,7 +56,7 @@ const App = ()=> {
       </div>
       <Routes>
         <Route path='/posts' element= {<Posts posts={posts}/>} />
-        <Route path = '/profile' element={<div>Profile</div>}/>
+        <Route path = '/profile' element={<div><Profile/></div>}/>
         <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
         <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
         <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>

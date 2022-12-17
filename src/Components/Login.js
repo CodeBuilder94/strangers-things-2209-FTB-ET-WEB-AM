@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
+
 
 const Login =(props) =>
 {
-    const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
+    const [badLogin, setBadLogin] =useState("");
 
+    const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
 
     const logIn = (ev) =>
   {
-    console.log("name:" + loginUsername + `password:  ${loginPassword}`)
+    console.log(ev);
 
     ev.preventDefault();
         fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/login', {
@@ -46,6 +48,7 @@ const Login =(props) =>
           })
       .catch(err => console.log(err));
 
+      <Profile />
   }
 
 
@@ -55,7 +58,9 @@ const Login =(props) =>
             <input className="InUser" placeholder="Username" value ={loginUsername} onChange={ev =>setLoginUsername(ev.target.value)}></input>
             <input className="password" placeholder="Password" value={loginPassword} onChange={ev =>setLoginPassword(ev.target.value)}></input>
             <button>Login</button>
+            <p className="error">{badLogin}</p>
         </form>
+        
     </div>
 }
 
