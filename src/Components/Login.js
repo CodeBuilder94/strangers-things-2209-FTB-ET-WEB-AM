@@ -1,10 +1,11 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Login =(props) =>
 {
     const [badLogin, setBadLogin] =useState("");
-
+    const navigate = useNavigate();
     const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
 
     const logIn = (ev) =>
@@ -25,14 +26,14 @@ const Login =(props) =>
     })
     .then(response => response.json())
       .then(result => {
-        console.log(result.error.message);
+        console.log(result);
 
-        if(result.success ===false)
+        if(!result.success)
         {
           setBadLogin(result.error.message);
         }
         else{
-          setBadLogin(result.data.message);
+          setBadLogin("");
         }
 
         setLoginPassword("");
@@ -51,8 +52,8 @@ const Login =(props) =>
             const user = result.data;
             setUser(user);
             setLoggedIn(true);
-
-            
+            navigate("/profile");
+            console.log(result);
           })
           .catch(console.error);
 

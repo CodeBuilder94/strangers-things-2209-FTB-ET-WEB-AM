@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";//Use useNamigate to move to a new page
+import { useNavigate } from "react-router-dom";
 
 
 const Register = (props) =>
@@ -25,17 +25,18 @@ const Register = (props) =>
       }).then(response => response.json())
         .then(result => {
 
-         if(result.success ===false){
+         if(!result.success){
             setBadRegister(result.error.message);
           }
           else{
             setBadRegister(result.data.message);
+            navigate("/login");
           }
           setRegisterPassword("");
           setRegisterUsername("");
         })
         .catch(err => console.log(err));
-
+        
     }
 
 

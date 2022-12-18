@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Link} from 'react-router-dom';
+import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
 import {Posts, Login, PostDetail, Register, Profile} from './Components';
 
 const App = ()=> {
@@ -33,6 +33,7 @@ const App = ()=> {
         return response.json();
       })
       .then(json => {setPosts(json.data.posts)});
+
   }, [])
 
 
@@ -53,14 +54,17 @@ const App = ()=> {
         {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login" onClick={logout}>Logout</Link>}
         {!loggedIn ?<Link to='/register'>Register</Link> : null}
       </nav>
+      <div className='sidebar'></div>
       </div>
       <Routes>
+        <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
         <Route path='/posts' element= {<Posts posts={posts}/>} />
-        <Route path = '/profile' element={<div><Profile/></div>}/>
+        <Route path = '/profile' element={<div><Profile /></div>}/>
         <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
         <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
         <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
       </Routes> 
+      
     </div>
 
   );
