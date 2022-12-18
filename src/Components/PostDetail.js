@@ -3,13 +3,16 @@ import {useParams, Link} from "react-router-dom";
 
 const PostDetail = ({posts}) =>
 {   
+   console.log(posts);
     const id = useParams().id;
-    console.log(useParams().id)
-    const post = posts.find(post => post._id === id)
-    console.log(post)
+    console.log("what is var id: " + id);
+    const post = posts.find(post => {post._id === id
+        console.log("what is the post id: "+post._id)
+    })
+    //console.log(post);
+
     if(!post)
     {
-        console.log("no post");
         return null;
     }
 

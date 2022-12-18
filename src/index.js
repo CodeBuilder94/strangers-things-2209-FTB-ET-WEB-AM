@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
-import {Posts, Login, PostDetail, Register, Profile} from './Components';
+import {Posts, Login, PostDetail, Register, Profile, Submit} from './Components';
 
 const App = ()=> {
   const [posts, setPosts] = useState([]);
@@ -58,7 +58,10 @@ const App = ()=> {
       </nav>
       </div>
       <div className='main'>
-      <div className='sidebar'>Search</div>
+      <div className='sidebar'>
+        Search
+        <Submit />
+      </div>
         <div className='focus'>
           <Routes>
             <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
