@@ -2,13 +2,14 @@ import React from "react";
 import {useParams, Link} from "react-router-dom";
 
 const PostDetail = ({posts}) =>
-{
-    const id = useParams()._id;
-    const post = posts.find(post => post.id === id);
-    console.log(post);
-
+{   
+    const id = useParams().id;
+    console.log(useParams().id)
+    const post = posts.find(post => post._id === id)
+    console.log(post)
     if(!post)
     {
+        console.log("no post");
         return null;
     }
 

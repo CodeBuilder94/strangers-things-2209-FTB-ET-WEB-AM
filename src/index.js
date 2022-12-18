@@ -41,30 +41,35 @@ const App = ()=> {
     window.localStorage.removeItem('token');
     setUser({});
     setLoggedIn(false);
+    setLoginPassword("");
+    setLoginUsername("");
   }
 
   return (
     <div>
       <div className="Header">
       <h1>Strangers Things</h1>
-      {loggedIn ? <h3 id ="accountName">{loginUsername}</h3>:null}
+      {loggedIn ? <div id='userName'><h3 id ="accountName">{loginUsername}</h3><div id='icon'><h3>{(loginUsername.slice(0,1).toUpperCase())}</h3></div></div>:null}
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
         {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login" onClick={logout}>Logout</Link>}
         {!loggedIn ?<Link to='/register'>Register</Link> : null}
       </nav>
-      <div className='sidebar'></div>
       </div>
-      <Routes>
-        <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
-        <Route path='/posts' element= {<Posts posts={posts}/>} />
-        <Route path = '/profile' element={<div><Profile /></div>}/>
-        <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
-        <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
-        <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
-      </Routes> 
-      
+      <div className='main'>
+      <div className='sidebar'>Search</div>
+        <div className='focus'>
+          <Routes>
+            <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
+            <Route path='/posts' element= {<Posts posts={posts}/>} />
+            <Route path = '/profile' element={<div><Profile /></div>}/>
+            <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
+            <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
+            <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
+          </Routes> 
+        </div>
+      </div>
     </div>
 
   );

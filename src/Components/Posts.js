@@ -5,7 +5,7 @@ const Posts = (props) =>
 {
     const {posts} = props;
     
-    console.log(posts);
+    //console.log(posts);
     return <ul>
         {
         posts.map((post) =>{

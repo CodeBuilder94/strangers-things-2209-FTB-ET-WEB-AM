@@ -26,18 +26,16 @@ const Login =(props) =>
     })
     .then(response => response.json())
       .then(result => {
-        console.log(result);
-
+       
         if(!result.success)
         {
           setBadLogin(result.error.message);
+          setLoginPassword("");
+          setLoginUsername("");
         }
         else{
           setBadLogin("");
         }
-
-        setLoginPassword("");
-        setLoginUsername("");
 
         const token = result.data.token;
         window.localStorage.setItem("token", token);
@@ -53,7 +51,6 @@ const Login =(props) =>
             setUser(user);
             setLoggedIn(true);
             navigate("/profile");
-            console.log(result);
           })
           .catch(console.error);
 

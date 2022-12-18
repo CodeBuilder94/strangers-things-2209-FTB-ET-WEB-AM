@@ -35,6 +35,40 @@ nav > a{
   padding-bottom: 5px;
 }
 
+/*name dispaly*/
+#username{
+  margin-right: 3rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+#accountName{
+  margin-right: 1rem;
+}
+
+#icon{
+  width: 50px;
+  background-color: lightgray;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+}
+
+.main{
+  display: flex;
+  height: 100%;
+}
+
+.sidebar{
+  background-color: violet;
+  display: flex;
+  width: 300px;
+}
 
 
 /*Posts */
@@ -87,6 +121,7 @@ nav > a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 250px;
 }
 
 form > input{
