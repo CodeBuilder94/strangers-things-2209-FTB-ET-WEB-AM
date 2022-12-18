@@ -3,13 +3,10 @@ import {useParams, Link} from "react-router-dom";
 
 const PostDetail = ({posts}) =>
 {   
-   console.log(posts);
-    const id = useParams().id;
-    console.log("what is var id: " + id);
-    const post = posts.find(post => {post._id === id
-        console.log("what is the post id: "+post._id)
-    })
-    //console.log(post);
+    let id = useParams().id;
+    id =id.slice(1);
+    
+    const post = posts.find(post => post._id === id)
 
     if(!post)
     {
@@ -26,7 +23,7 @@ const PostDetail = ({posts}) =>
             </div>
             <div className ="cardBody">
                 <p className ="details"><em>Details: </em>{post.description}</p>
-                <p className="price">{post.price}</p>
+                <p className="price">Price: {post.price}</p>
                 <div className="times">
                 <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                 <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>

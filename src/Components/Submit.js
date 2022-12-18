@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Submit = () =>{
+
+    //create useStates for each of the fields
+
    return <div id="submit">
 
         <h4>Submit Item:</h4>

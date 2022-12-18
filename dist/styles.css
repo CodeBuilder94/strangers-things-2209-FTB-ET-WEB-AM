@@ -1,6 +1,7 @@
 body {
   font-family: verdana;
   margin:0;
+  
 }
 
 .Header{
@@ -13,7 +14,7 @@ body {
   align-items: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-top: 1rem;
-  
+  padding-top: 10px;
 }
 
 #accountName{
@@ -64,6 +65,10 @@ nav > a{
   height: 100%;
 }
 
+.focus{
+  width: 75%;
+}
+
 .sidebar{
   background-color: violet;
   display: flex;
@@ -84,6 +89,7 @@ nav > a{
 .postDetails{
   margin-left: 1rem;
   margin-right: 1rem;
+  width: 100%;
 }
 
 .summery{
@@ -99,10 +105,16 @@ nav > a{
   background-color: blueviolet;
 }
 
+.title{
+  font-size: large;
+}
+
 .postHeader > *{
   margin-left: 1rem;
   margin-top: 5px;
   margin-bottom: 0;
+  padding-bottom: 5px;
+  padding-top: 5px;
   
 }
 

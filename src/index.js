@@ -65,7 +65,7 @@ const App = ()=> {
         <div className='focus'>
           <Routes>
             <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
-            <Route path='/posts' element= {<Posts posts={posts}/>} />
+            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn}/>} />
             <Route path = '/profile' element={<div><Profile /></div>}/>
             <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
             <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
