@@ -5,7 +5,7 @@ const PostDetail = ({posts}) =>
 {
     const id = useParams()._id;
     const post = posts.find(post => post.id === id);
-    console.log(posts.find(post => post.id === id));
+    console.log(post);
 
     if(!post)
     {
