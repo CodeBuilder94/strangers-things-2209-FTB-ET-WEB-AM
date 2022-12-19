@@ -16,6 +16,7 @@ const Submit = () =>{
                 <label>Will Deliver?</label>
                 <input type={"checkbox"}></input>
             </div>
+            <button>Submit</button>
             
         </form>
    </div>
