@@ -26,14 +26,33 @@ const App = ()=> {
   const TEST_DATA = `/test/data`;
   
   useEffect(()=> {
-    
+
     //get The posts
     fetch(`${URL_BASE}/posts`)
-      .then(response =>{
-        return response.json();
-      })
-      .then(json => {setPosts(json.data.posts)});
+    .then(response =>{
+      return response.json();
+    })
+    .then(json => {setPosts(json.data.posts)});
 
+      //make sure user stays logged in after refresh.
+      const token = window.localStorage.getItem('token');
+    if(token)
+    {
+          fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/me', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+    }).then(response => response.json())
+      .then(result => {
+        const user = result.data;
+                
+        setUser(user);
+        setLoggedIn(true);
+        
+      })
+      .catch(err => console.log(err));
+    }
   }, [])
 
 
@@ -49,7 +68,7 @@ const App = ()=> {
     <div>
       <div className="Header">
       <h1>Strangers Things</h1>
-      {loggedIn ? <div id='userName'><h3 id ="accountName">{loginUsername}</h3><div id='icon'><h3>{(loginUsername.slice(0,1).toUpperCase())}</h3></div></div>:null}
+      {loggedIn ? <div id='userName'><h3 id ="accountName">{user.username}</h3><div id='icon'><h3>{(user.username.slice(0,1).toUpperCase())}</h3></div></div>:null}
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
@@ -64,12 +83,12 @@ const App = ()=> {
       </div>
         <div className='focus'>
           <Routes>
-            <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
-            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn}/>} />
-            <Route path = '/profile' element={<div><Profile /></div>}/>
-            <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
-            <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
             <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
+            <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
+            <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
+            <Route path = '/profile' element={<div><Profile /></div>}/>
+            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn}/>} />
+            <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
           </Routes> 
         </div>
       </div>

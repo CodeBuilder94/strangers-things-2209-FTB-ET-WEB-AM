@@ -27,13 +27,15 @@ const Register = (props) =>
 
          if(!result.success){
             setBadRegister(result.error.message);
+            setRegisterPassword("");
+            setRegisterUsername("");
+            throw result.error;
           }
           else{
             setBadRegister(result.data.message);
             navigate("/login");
           }
-          setRegisterPassword("");
-          setRegisterUsername("");
+          
         })
         .catch(err => console.log(err));
         

@@ -32,6 +32,7 @@ const Login =(props) =>
           setBadLogin(result.error.message);
           setLoginPassword("");
           setLoginUsername("");
+          throw result.error;
         }
         else{
           setBadLogin("");

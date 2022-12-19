@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Link} from "react-router-dom";
 
 const Posts = (props) =>
 {
     const {posts, loggedIn} = props;
+    
+
     
     //console.log(posts);
     return <ul>
