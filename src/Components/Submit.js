@@ -23,7 +23,7 @@ const Submit = () =>{
        const token = window.localStorage.getItem('token');
        
 
-       fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/posts', {
+       fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/posts', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

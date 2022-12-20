@@ -39,7 +39,7 @@ const App = ()=> {
       
     if(token)
     {
-          fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/me', {
+          fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/me', {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`

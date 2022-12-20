@@ -12,7 +12,7 @@ const Login =(props) =>
   {
 
     ev.preventDefault();
-        fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/login', {
+        fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/login', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const Login =(props) =>
         const token = result.data.token;
         window.localStorage.setItem("token", token);
         
-          fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/me', {
+          fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/me', {
             headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

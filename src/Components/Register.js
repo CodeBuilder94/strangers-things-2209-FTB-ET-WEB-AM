@@ -11,7 +11,7 @@ const Register = (props) =>
     const  register = (ev) =>{
         
         ev.preventDefault();
-        fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/register', {
+        fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/register', {
             method: "POST",
             headers: {
             'Content-Type': 'application/json'

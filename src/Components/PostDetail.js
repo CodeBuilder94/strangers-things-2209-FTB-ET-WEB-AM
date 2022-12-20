@@ -17,7 +17,7 @@ const PostDetail = ({posts, user}) =>
         const token = window.localStorage.getItem('token');
 
         //remove the item from the api
-        fetch(`https://strangers-things.herokuapp.com/api/COHORT-NAME/posts/${id}`, {
+        fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/posts/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
