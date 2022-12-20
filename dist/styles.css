@@ -13,8 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-top: 1rem;
-  padding-top: 10px;
+  padding-top: 1.5rem;
 }
 
 #accountName{
@@ -62,7 +61,8 @@ nav > a{
 
 .main{
   display: flex;
-  height: 100%;
+  align-self: stretch;
+  min-height: 100%;
 }
 
 .focus{
@@ -72,7 +72,7 @@ nav > a{
 .sidebar{
   background-color: violet;
   display: flex;
-  width: 300px;
+  width: 350px;
 }
 
 
@@ -147,4 +147,34 @@ form > input{
 
 .error{
   color: red;
+}
+
+/*Submit Item*/
+#submitDetails{
+  display: flex;
+  flex-direction: column;
+  border: solid white 1px;
+  padding: 10px 10px;
+  width: 250px;
+}
+
+#submitDetails > button{
+  margin-top: .5rem;
+  height: 2rem;
+  border-radius: 15px;;
+}
+
+#submitDetails > label{
+  margin-top: .5rem;
+}
+
+#descriptionBox{
+  height: 60px;
+  text-justify:distribute;
+}
+
+
+#submit > h4{
+  margin-bottom: 5px;
+  margin-top: 5rem;
 }

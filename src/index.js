@@ -36,6 +36,7 @@ const App = ()=> {
 
       //make sure user stays logged in after refresh.
       const token = window.localStorage.getItem('token');
+      
     if(token)
     {
           fetch('https://strangers-things.herokuapp.com/api/2209-FBT-ET-WEB-AM/users/me', {
@@ -79,7 +80,7 @@ const App = ()=> {
       <div className='main'>
       <div className='sidebar'>
         Search
-        <Submit />
+        {loggedIn ?<Submit /> : null}
       </div>
         <div className='focus'>
           <Routes>
