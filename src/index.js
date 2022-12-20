@@ -84,7 +84,7 @@ const App = ()=> {
       </div>
         <div className='focus'>
           <Routes>
-            <Route path ='/posts/:id' element={<div><PostDetail posts={posts}/></div>}/>
+            <Route path ='/posts/:id' element={<div><PostDetail posts={posts} user={user}/></div>}/>
             <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
             <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
             <Route path = '/profile' element={<div><Profile /></div>}/>

@@ -178,3 +178,8 @@ form > input{
   margin-bottom: 5px;
   margin-top: 5rem;
 }
+
+#descriptionBox{
+  resize: none;
+  height: 120px;
+}

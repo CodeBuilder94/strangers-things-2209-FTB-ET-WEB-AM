@@ -1,12 +1,34 @@
 import React from "react";
 import {useParams, Link} from "react-router-dom";
 
-const PostDetail = ({posts}) =>
+const PostDetail = ({posts, user}) =>
 {   
+    const author = user._id;
+
+
     let id = useParams().id;
     id =id.slice(1);
     
     const post = posts.find(post => post._id === id)
+
+    const remove = (ev) =>
+    {
+        ev.preventDefault()
+        const token = window.localStorage.getItem('token');
+
+        //remove the item from the api
+        fetch(`https://strangers-things.herokuapp.com/api/COHORT-NAME/posts/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => response.json())
+        .then(result => {
+            console.log(result);
+        })
+        .catch(console.error);
+    }
 
     if(!post)
     {
@@ -28,6 +50,7 @@ const PostDetail = ({posts}) =>
                 <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                 <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
             </div>
+            {author === post.author ? <button onClick={remove}>Delete</button> : null}
             </div>    
         </div>
    )
