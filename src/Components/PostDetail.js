@@ -1,35 +1,22 @@
 import React from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
+import {removePost, getPosts} from "../api"
 
-const PostDetail = ({posts, user}) =>
+
+
+const PostDetail = ({posts, token, setPosts}) =>
 {   
     const navigate = useNavigate();
-    const author = user._id;
-    
     let id = useParams().id;
     id =id.slice(1);
     
     const post = posts.find(post => post._id === id)
 
-    const remove = (ev) =>
+    const remove = async (ev) =>
     {
         ev.preventDefault()
-        const token = window.localStorage.getItem('token');
-
-        //remove the item from the api
-        fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/posts/${id}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-            navigate('/posts');
-            window.location.reload();
-        })
-        .catch(console.error);
+        await removePost(id);
+        navigate("/posts");
     }
 
     if(!post)
@@ -54,7 +41,8 @@ const PostDetail = ({posts, user}) =>
                         <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                         <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
                     </div>
-                    {author === post.author._id ? <button onClick={remove}>Delete</button> : null}
+                    {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
+                    <button onClick={remove}>Delete</button>
                     </div>    
                 </div>
         )

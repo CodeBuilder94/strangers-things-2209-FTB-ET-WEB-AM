@@ -6,7 +6,7 @@ const Login =(props) =>
 {
     const [badLogin, setBadLogin] =useState("");
     const navigate = useNavigate();
-    const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword} =props;
+    const {setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword, setToken} =props;
 
     const logIn = (ev) =>
   {
@@ -51,6 +51,7 @@ const Login =(props) =>
             const user = result.data;
             setUser(user);
             setLoggedIn(true);
+            setToken(token);
             navigate("/profile");
           })
           .catch(console.error);

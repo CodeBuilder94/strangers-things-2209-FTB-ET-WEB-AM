@@ -88,6 +88,10 @@ nav > a{
   box-shadow: 5px 5px 5px plum;
 }
 
+#myPost{
+  background-color: black;
+}
+
 .postDetails{
   margin-left: 1rem;
   margin-right: 1rem;

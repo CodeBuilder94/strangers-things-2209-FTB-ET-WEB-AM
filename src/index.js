@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
 import {Posts, Login, PostDetail, Register, Profile, Submit} from './Components';
+import { getPosts, stayLogged, logout } from './api';
 
 const App = ()=> {
   const [posts, setPosts] = useState([]);
@@ -12,59 +13,23 @@ const App = ()=> {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
+  const [token, setToken] = useState(null);
   
-  const URL_BASE =`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am`;
-  const POSTS = `/posts`;
-  const URL_REGISTER = `/users/register`;
-  const LOGIN = `/users/login`;
-  const ME_URL =`/users/me/`;
-  const POST_ID = `/posts/POST_ID`;
-  const MESSAGES = `/posts/POST_ID/messages`;
-
-  //test URLS
-  const TEST_ME = `/test/me`;
-  const TEST_DATA = `/test/data`;
   
   useEffect(()=> {
 
-    //get The posts
-    fetch(`${URL_BASE}/posts`)
-    .then(response =>{
-      return response.json();
-    })
-    .then(json => {setPosts(json.data.posts)});
+    getPosts(setPosts);
 
-      //make sure user stays logged in after refresh.
-      const token = window.localStorage.getItem('token');
-      
-    if(token)
+    const token = window.localStorage.getItem('token');
+    if(!token)
     {
-          fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/me', {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-    }).then(response => response.json())
-      .then(result => {
-        const user = result.data;
-                
-        setUser(user);
-        setLoggedIn(true);
-        
-      })
-      .catch(err => console.log(err));
+      stayLogged(setToken, token, setLoggedIn, setUser);
     }
-  }, [])
+    
+    
+  }, [token, posts])
 
-
-  const logout =() =>{
-    window.localStorage.removeItem('token');
-    setUser({});
-    setLoggedIn(false);
-    setLoginPassword("");
-    setLoginUsername("");
-  }
-
+  
   return (
     <div>
       <div className="Header">
@@ -73,7 +38,7 @@ const App = ()=> {
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
-        {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login" onClick={logout}>Logout</Link>}
+        {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login" onClick={ev =>logout(setUser,setLoggedIn,setLoginPassword,setLoginUsername, loggedIn)}>Logout</Link>}
         {!loggedIn ?<Link to='/register'>Register</Link> : null}
       </nav>
       </div>
@@ -84,11 +49,11 @@ const App = ()=> {
       </div>
         <div className='focus'>
           <Routes>
-            <Route path ='/posts/:id' element={<div><PostDetail posts={posts} user={user}/></div>}/>
+            <Route path ='/posts/:id' element={<div><PostDetail posts={posts} token={token} setPosts={setPosts}/></div>}/>
             <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
-            <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser}/>} />
-            <Route path = '/profile' element={<div><Profile /></div>}/>
-            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn}/>} />
+            <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser} setToken={setToken}/>} />
+            <Route path = '/profile' element={<div><Profile posts={posts} token={token}/></div>}/>
+            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn} token={token}/>} />
             <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
           </Routes> 
         </div>
