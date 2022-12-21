@@ -41,11 +41,7 @@ const Submit = () =>{
         }).then(response => response.json())
         .then(result => {
             console.log(result);
-            setItemName("");
-            setDescription("");
-            setPrice("");
-            setLocation("[On Request]");
-            setDeliver(false);
+            
             //reload the page so the post appears
             window.location.reload();
         })
