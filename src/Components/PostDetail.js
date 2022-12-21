@@ -42,6 +42,7 @@ const PostDetail = ({posts, user}) =>
                 <h2 className="title">{post.title}</h2>
                 <h3 className="poster">User: {post.author.username}</h3>
                 <h3 className ="location">Location: {post.location}</h3>
+                <h3 className="delivery">Will Deliver: {post.willDeliver ? <span>Yes</span> : <span>No</span>}</h3>
             </div>
             <div className ="cardBody">
                 <p className ="details"><em>Details: </em>{post.description}</p>
