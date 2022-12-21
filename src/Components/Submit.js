@@ -46,6 +46,8 @@ const Submit = () =>{
             setPrice("");
             setLocation("[On Request]");
             setDeliver(false);
+            //reload the page so the post appears
+            window.location.reload();
         })
         .catch(console.error);
 
@@ -65,7 +67,7 @@ const Submit = () =>{
             <input type="text" placeholder="Location" value={location} onChange={ev => setLocation(ev.target.value)}></input><br></br>
             <div id="delivery">
                 <label>Will Deliver?</label>
-                <input type={"checkbox"} value={deliver} onChange={ev => setDeliver(ev.target.value)}></input>
+                <input type={"checkbox"} value={deliver} onChange={ev => setDeliver(ev.target.checked)}></input>
             </div>
             <button>Submit</button>
         </form>

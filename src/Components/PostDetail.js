@@ -34,7 +34,7 @@ const PostDetail = ({posts, user}) =>
     {
         return null;
     }
-
+    console.log("is author?: " + (author ===PostDetail.author))
    return( 
         <div className="postDetails"> 
             <h6><Link  to ="/posts">Back to Posts</Link></h6>   
