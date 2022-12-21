@@ -1,11 +1,11 @@
 import React from "react";
-import {useParams, Link} from "react-router-dom";
+import {useParams, Link, useNavigate} from "react-router-dom";
 
 const PostDetail = ({posts, user}) =>
 {   
+    const navigate = useNavigate();
     const author = user._id;
-
-
+    
     let id = useParams().id;
     id =id.slice(1);
     
@@ -26,6 +26,8 @@ const PostDetail = ({posts, user}) =>
         }).then(response => response.json())
         .then(result => {
             console.log(result);
+            navigate('/posts');
+            window.location.reload();
         })
         .catch(console.error);
     }
@@ -34,27 +36,29 @@ const PostDetail = ({posts, user}) =>
     {
         return null;
     }
-    console.log("is author?: " + (author ===PostDetail.author))
-   return( 
-        <div className="postDetails"> 
-            <h6><Link  to ="/posts">Back to Posts</Link></h6>   
-            <div className = "postHeader">
-                <h2 className="title">{post.title}</h2>
-                <h3 className="poster">User: {post.author.username}</h3>
-                <h3 className ="location">Location: {post.location}</h3>
-                <h3 className="delivery">Will Deliver: {post.willDeliver ? <span>Yes</span> : <span>No</span>}</h3>
-            </div>
-            <div className ="cardBody">
-                <p className ="details"><em>Details: </em>{post.description}</p>
-                <p className="price">Price: {post.price}</p>
-                <div className="times">
-                <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
-                <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
-            </div>
-            {author === post.author ? <button onClick={remove}>Delete</button> : null}
-            </div>    
-        </div>
-   )
+    if(post.active)
+    {
+        return( 
+                <div className="postDetails"> 
+                    <h6><Link  to ="/posts">Back to Posts</Link></h6>   
+                    <div className = "postHeader">
+                        <h2 className="title">{post.title}</h2>
+                        <h3 className="poster">User: {post.author.username}</h3>
+                        <h3 className ="location">Location: {post.location}</h3>
+                        <h3 className="delivery">Will Deliver: {post.willDeliver ? <span>Yes</span> : <span>No</span>}</h3>
+                    </div>
+                    <div className ="cardBody">
+                        <p className ="details"><em>Details: </em>{post.description}</p>
+                        <p className="price">Price: {post.price}</p>
+                        <div className="times">
+                        <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
+                        <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
+                    </div>
+                    {author === post.author._id ? <button onClick={remove}>Delete</button> : null}
+                    </div>    
+                </div>
+        )
+    }
 }
 
 export default PostDetail;

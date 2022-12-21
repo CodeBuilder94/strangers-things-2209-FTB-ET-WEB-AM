@@ -6,8 +6,6 @@ const Posts = (props) =>
     const {posts, loggedIn} = props;
     
 
-    
-    //console.log(posts);
     return <ul>
         {
         posts.map((post) =>{
