@@ -79,7 +79,7 @@ const App = ()=> {
       </div>
       <div className='main'>
       <div className='sidebar'>
-        Search
+      <div>Search</div>
         {loggedIn ?<Submit /> : null}
       </div>
         <div className='focus'>

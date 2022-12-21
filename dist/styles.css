@@ -72,6 +72,8 @@ nav > a{
 .sidebar{
   background-color: violet;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 350px;
 }
 
@@ -150,6 +152,7 @@ form > input{
 }
 
 /*Submit Item*/
+
 #submitDetails{
   display: flex;
   flex-direction: column;
@@ -182,4 +185,9 @@ form > input{
 #descriptionBox{
   resize: none;
   height: 120px;
+}
+
+/*Profile page*/
+.profile{
+  margin-left: 1rem;
 }
