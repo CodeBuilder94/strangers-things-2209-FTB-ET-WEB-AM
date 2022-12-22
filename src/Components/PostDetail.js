@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
 import {removePost, sendMessage} from "../api"
+import {Messages} from "/";
 
 const PostDetail = ({posts, setPosts}) =>
 {   
@@ -15,7 +16,7 @@ const PostDetail = ({posts, setPosts}) =>
     const remove = async (ev) =>
     {
         ev.preventDefault()
-        await removePost(id, navigate, setPosts);
+        await removePost(id, navigate, setPosts,"/posts");
     }
 
     const edit = async (ev) =>
@@ -58,6 +59,7 @@ const PostDetail = ({posts, setPosts}) =>
                         <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>
                         <button>Send Message</button>
                     </form>: null}
+                    <Messages post={post}/>
                 </div>
         )
     }

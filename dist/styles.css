@@ -113,6 +113,7 @@ nav > a{
 
 .postHeader{
   background-color: blueviolet;
+  border-radius: 15px;
 }
 
 .title{
@@ -125,6 +126,7 @@ nav > a{
   margin-bottom: 0;
   padding-bottom: 5px;
   padding-top: 5px;
+  color: azure;
   
 }
 
@@ -217,5 +219,16 @@ form > input{
 }
 
 .messages{
+  margin-left: 1rem;
+}
+
+.messageList{
+  border: solid black 1px;
+  border-radius: 20px;
+  width:550px;
+  margin-bottom: 1.5rem;
+}
+
+.messageList > *{
   margin-left: 1rem;
 }

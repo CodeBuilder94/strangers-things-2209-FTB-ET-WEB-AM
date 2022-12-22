@@ -94,6 +94,8 @@ export const logout =(setUser, setLoggedIn, setLoginPassword, setLoginUsername, 
   .catch(err => console.log(err));
   })
 
+
+
 export const loginUser = (async(setUser, setLoggedIn, loginUsername, setLoginUsername, loginPassword, setLoginPassword, setToken, setBadLogin, navigate)=>{
   fetch(`${URL_BASE}${LOGIN}`, {
       method: "POST",
@@ -182,7 +184,7 @@ export async function editPost()
 
 }
 
-export async function removePost(id, navigate, setPosts)
+export async function removePost(id, navigate, setPosts, location)
 {
     const token = window.localStorage.getItem('token');
     
@@ -196,7 +198,7 @@ export async function removePost(id, navigate, setPosts)
         }).then(response => response.json())
         .then(result => {
             console.log(result);
-            navigate("/posts");
+            navigate(location);
             getPosts(setPosts);
         })
         .catch(console.error);

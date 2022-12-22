@@ -1,14 +1,18 @@
 import React from "react";
+import {useParams, useNavigate} from "react-router-dom";
 import {Messages} from "/";
+import { removePost } from "../api";
 
 const Profile =(props) =>{
 
-    const {posts, token} =props;
-
-    const remove = async (ev) =>
+    const {posts, setPosts} =props;
+    
+    const navigate = useNavigate();
+   
+    const remove = async (ev,id) =>
     {
         ev.preventDefault()
-        await removePost(id, navigate);
+        await removePost(id, navigate, setPosts,"/profile");
     }
 
     const edit = async (ev) =>
@@ -41,7 +45,7 @@ const Profile =(props) =>{
                             <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                             <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
                         </div>
-                        {post.isAuthor ? <span><button onClick={remove}>Delete</button> <button onClick={edit}>Edit</button></span> : null}
+                        {post.isAuthor ? <span><button onClick={ev =>remove(ev, post._id)}>Delete</button> <button onClick={edit}>Edit</button></span> : null}
                         </div>
                     </div>
                     <Messages post={post}/>

@@ -47,7 +47,7 @@ const App = ()=> {
             <Route path ='/posts/:id' element={<div><PostDetail posts={posts} setPosts={setPosts}/></div>}/>
             <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
             <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser} setToken={setToken}/>} />
-            <Route path = '/profile' element={<div><Profile posts={posts} token={token}/></div>}/>
+            <Route path = '/profile' element={<div><Profile posts={posts} setPosts={setPosts}/></div>}/>
             <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn} token={token}/>} />
             <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
           </Routes> 
