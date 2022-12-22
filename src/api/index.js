@@ -12,12 +12,17 @@ const URL_BASE =`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am`;
 
 export const getPosts = (async(setPosts)=>
 {
+    const token = window.localStorage.getItem('token');
     //get The posts
-    fetch(`${URL_BASE}/posts`)
+    fetch(`${URL_BASE}/posts`,{
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },})
     .then(response =>{
       return response.json();
     })
-    .then(json => {setPosts(json.data.posts)});
+    .then(json => setPosts(json.data.posts));
 })
 
 //login functions
@@ -172,16 +177,15 @@ export const addPost = (async(itemName, description, price, location, deliver)=>
 
 
 //functions to alter posts
-export async function edit()
+export async function editPost()
 {
 
 }
 
-export async function removePost(id)
+export async function removePost(id, navigate)
 {
     const token = window.localStorage.getItem('token');
-    //const navigate = useNavigate();
-
+    
         //remove the item from the api
         fetch(`${URL_BASE}/posts/${id}`, {
             method: "DELETE",
@@ -192,7 +196,7 @@ export async function removePost(id)
         }).then(response => response.json())
         .then(result => {
             console.log(result);
-            return result;
+            navigate("/posts");
         })
         .catch(console.error);
 }

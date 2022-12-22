@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Posts = (props) =>
 {
-    const {posts, loggedIn, token} = props;
+    const {posts, loggedIn} = props;
     
 
     return <ul>

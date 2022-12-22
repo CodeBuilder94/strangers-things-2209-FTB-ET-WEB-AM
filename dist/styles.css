@@ -88,14 +88,18 @@ nav > a{
   box-shadow: 5px 5px 5px plum;
 }
 
-#myPost{
-  background-color: black;
+.myPost{
+  background-color: lightskyblue;
 }
 
 .postDetails{
   margin-left: 1rem;
   margin-right: 1rem;
   width: 100%;
+}
+
+.itemPost, button{
+  border-radius: 15px;
 }
 
 .summery{
@@ -168,7 +172,7 @@ form > input{
 #submitDetails > button{
   margin-top: .5rem;
   height: 2rem;
-  border-radius: 15px;;
+  border-radius: 15px;
 }
 
 #submitDetails > label{
@@ -194,4 +198,19 @@ form > input{
 /*Profile page*/
 .profile{
   margin-left: 1rem;
+}
+
+/*The message*/
+.message{
+  display: flex;
+  flex-direction: column;
+}
+
+.messageArea{
+  height: 100px;
+}
+
+.message > button{
+  width: fit-content;
+  margin-top: 1rem;
 }

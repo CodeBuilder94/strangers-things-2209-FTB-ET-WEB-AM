@@ -4,6 +4,19 @@ const Profile =(props) =>{
 
     const {posts, token} =props;
 
+    const remove = async (ev) =>
+    {
+        ev.preventDefault()
+        await removePost(id, navigate);
+    }
+
+    const edit = async (ev) =>
+    {
+        ev.preventDefault();
+
+    }
+
+
     const myPosts = posts.filter((post) => post.isAuthor)
 
     return <div className="profile">
@@ -11,7 +24,7 @@ const Profile =(props) =>{
         <h2>My Posts:</h2>
         <div>
             {  
-               posts.map((post) =>{
+               myPosts.map((post) =>{
                 return <li key={post._id} className= "postDetails itemPost">
                     <div className="summery">
                         <div className = "postHeader">

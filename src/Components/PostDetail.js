@@ -1,10 +1,8 @@
 import React from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
-import {removePost, getPosts} from "../api"
+import {removePost} from "../api"
 
-
-
-const PostDetail = ({posts, token, setPosts}) =>
+const PostDetail = ({posts}) =>
 {   
     const navigate = useNavigate();
     let id = useParams().id;
@@ -15,8 +13,13 @@ const PostDetail = ({posts, token, setPosts}) =>
     const remove = async (ev) =>
     {
         ev.preventDefault()
-        await removePost(id);
-        navigate("/posts");
+        await removePost(id, navigate);
+    }
+
+    const edit = async (ev) =>
+    {
+        ev.preventDefault();
+
     }
 
     if(!post)
@@ -43,6 +46,10 @@ const PostDetail = ({posts, token, setPosts}) =>
                     </div>
                     {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
                     </div>    
+                    {!post.isAuthor ?<form className="message">
+                        <input className="messageArea" placeholder="Talk to me..." type={"textarea"}></input>
+                        <button>Send Message</button>
+                    </form>: null}
                 </div>
         )
     }
