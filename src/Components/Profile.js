@@ -1,11 +1,11 @@
 import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
-import {Messages} from "/";
+import {Messages, MyMessages} from "/";
 import { removePost } from "../api";
 
 const Profile =(props) =>{
 
-    const {posts, setPosts} =props;
+    const {posts, setPosts, user} =props;
     
     const navigate = useNavigate();
    
@@ -53,6 +53,7 @@ const Profile =(props) =>{
                })
             }
         </div>
+        {<MyMessages user={user}/>}
     </div>
 }
 
