@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {Messages, MyMessages} from "/";
 import { removePost } from "../api";
 
@@ -53,7 +53,8 @@ const Profile =(props) =>{
                })
             }
         </div>
-        {<MyMessages user={user}/>}
+        <h2>Inbox</h2>
+        <MyMessages user={user}/>
     </div>
 }
 

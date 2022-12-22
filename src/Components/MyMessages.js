@@ -3,8 +3,8 @@ import React from "react";
 const MyMessages = ({user}) =>
 {
     return(
-        <div id="inbox">
-            <h2>Inbox:</h2>
+        <div id="Sent">
+            <h2>Sent:</h2>
         </div>
     )
 }
