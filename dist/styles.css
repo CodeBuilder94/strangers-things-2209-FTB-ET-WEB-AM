@@ -208,6 +208,7 @@ form > input{
 
 .messageArea{
   height: 100px;
+  resize: none;
 }
 
 .message > button{

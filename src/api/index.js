@@ -14,7 +14,7 @@ export const getPosts = (async(setPosts)=>
 {
     const token = window.localStorage.getItem('token');
     //get The posts
-    fetch(`${URL_BASE}/posts`,{
+    fetch(`${URL_BASE}${POSTS}`,{
       headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -149,7 +149,7 @@ export const addPost = (async(itemName, description, price, location, deliver)=>
   
   const token = window.localStorage.getItem('token');
   
-  fetch(`${URL_BASE}/posts`, {
+  fetch(`${URL_BASE}${POSTS}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -182,12 +182,12 @@ export async function editPost()
 
 }
 
-export async function removePost(id, navigate)
+export async function removePost(id, navigate, setPosts)
 {
     const token = window.localStorage.getItem('token');
     
         //remove the item from the api
-        fetch(`${URL_BASE}/posts/${id}`, {
+        fetch(`${URL_BASE}${POSTS}/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -197,6 +197,31 @@ export async function removePost(id, navigate)
         .then(result => {
             console.log(result);
             navigate("/posts");
+            getPosts(setPosts);
         })
         .catch(console.error);
 }
+
+
+
+//add a message
+export const sendMessage =(async (id,postMessage,setPostMessage)=>
+{
+    fetch(`${URL_BASE}${POSTS}/${id}/messages`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer TOKEN_STRING_HERE'
+      },
+      body: JSON.stringify({
+        message: {
+          content: postMessage
+        }
+      })
+    }).then(response => response.json())
+      .then(result => {
+        console.log(result);
+        setPostMessage("");
+      })
+      .catch(console.error);
+})

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { addPost } from "../api";
 
-const Submit = () =>{
+const Submit = ({setPosts}) =>{
 
     //create useStates for each of the fields
     const [itemName, setItemName] = useState("");

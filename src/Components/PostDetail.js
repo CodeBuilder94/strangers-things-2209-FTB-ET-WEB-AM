@@ -1,25 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
-import {removePost} from "../api"
+import {removePost, sendMessage} from "../api"
 
-const PostDetail = ({posts}) =>
+const PostDetail = ({posts, setPosts}) =>
 {   
     const navigate = useNavigate();
     let id = useParams().id;
     id =id.slice(1);
     
+    const [postMessage, setPostMessage] = useState("");
+
     const post = posts.find(post => post._id === id)
 
     const remove = async (ev) =>
     {
         ev.preventDefault()
-        await removePost(id, navigate);
+        await removePost(id, navigate, setPosts);
     }
 
     const edit = async (ev) =>
     {
         ev.preventDefault();
 
+    }
+
+    const message = async (ev) =>
+    {
+        ev.preventDefault();
+        await sendMessage(id,postMessage, setPostMessage);
     }
 
     if(!post)
@@ -46,8 +54,8 @@ const PostDetail = ({posts}) =>
                     </div>
                     {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
                     </div>    
-                    {!post.isAuthor ?<form className="message">
-                        <input className="messageArea" placeholder="Talk to me..." type={"textarea"}></input>
+                    {!post.isAuthor ?<form className="message" onSubmit={message}>
+                        <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>
                         <button>Send Message</button>
                     </form>: null}
                 </div>
