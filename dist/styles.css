@@ -215,3 +215,7 @@ form > input{
   width: fit-content;
   margin-top: 1rem;
 }
+
+.messages{
+  margin-left: 1rem;
+}

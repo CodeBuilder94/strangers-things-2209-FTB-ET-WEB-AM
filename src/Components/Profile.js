@@ -1,4 +1,5 @@
 import React from "react";
+import {Messages} from "/";
 
 const Profile =(props) =>{
 
@@ -43,6 +44,7 @@ const Profile =(props) =>{
                         {post.isAuthor ? <span><button onClick={remove}>Delete</button> <button onClick={edit}>Edit</button></span> : null}
                         </div>
                     </div>
+                    <Messages post={post}/>
                 </li>
                })
             }

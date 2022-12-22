@@ -207,11 +207,13 @@ export async function removePost(id, navigate, setPosts)
 //add a message
 export const sendMessage =(async (id,postMessage,setPostMessage)=>
 {
+  const token = window.localStorage.getItem('token');
+
     fetch(`${URL_BASE}${POSTS}/${id}/messages`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer TOKEN_STRING_HERE'
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         message: {
