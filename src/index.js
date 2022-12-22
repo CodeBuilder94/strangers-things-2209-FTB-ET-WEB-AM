@@ -22,8 +22,6 @@ const App = ()=> {
 
     stayLogged(setToken, setLoggedIn, setUser);
 
-    
-    
   }, [token, posts])
 
   
@@ -35,7 +33,7 @@ const App = ()=> {
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
         {loggedIn ? <Link to ='/profile'>Profile</Link> :null}
-        {!loggedIn ?<Link to='/login'>Login</Link> : <Link to ="/login" onClick={ev =>logout(setUser,setLoggedIn,setLoginPassword,setLoginUsername)}>Logout</Link>}
+        {!loggedIn ?<Link to='/login'>Login</Link> : <Link onClick={ev =>logout(setUser,setLoggedIn,setLoginPassword,setLoginUsername, setToken)} to ="/login">Logout</Link>}
         {!loggedIn ?<Link to='/register'>Register</Link> : null}
       </nav>
       </div>

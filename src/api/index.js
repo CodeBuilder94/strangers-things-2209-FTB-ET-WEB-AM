@@ -27,12 +27,6 @@ export const stayLogged =(async(setToken, setLoggedIn, setUser) => {
 
     if(token)
     {
-      return;
-    }
-
-    setToken(token);
-  if(token)
-  {
         fetch(`${URL_BASE}${ME_URL}`, {
           headers: {
             'Content-Type': 'application/json',
@@ -41,22 +35,28 @@ export const stayLogged =(async(setToken, setLoggedIn, setUser) => {
         }).then(response => response.json())
             .then(result => {
             const user = result.data;
-                    
+            setToken(token);
             setUser(user);
             setLoggedIn(true);
-            
 
             })
             .catch(err => console.log(err));
-        }
+    }
 }) 
 
-export const logout =(setUser, setLoggedIn, setLoginPassword, setLoginUsername) =>{
+
+
+
+export const logout =(setUser, setLoggedIn, setLoginPassword, setLoginUsername, setToken) =>{
+      
     window.localStorage.removeItem('token');
     setUser({});
     setLoggedIn(false);
+    setToken(null);
     setLoginPassword("");
     setLoginUsername("");
+    
+
   }
 
   export const registerUser = (async(registerUsername, registerPassword, setRegisterUsername, setRegisterPassword, setBadRegister, navigate) =>
