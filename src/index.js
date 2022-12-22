@@ -21,8 +21,8 @@ const App = ()=> {
     getPosts(setPosts);
 
     stayLogged(setToken, setLoggedIn, setUser);
-
-  }, [token, posts])
+    
+  }, [token])
 
   
   return (

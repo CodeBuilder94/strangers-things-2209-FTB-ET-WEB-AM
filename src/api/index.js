@@ -56,7 +56,6 @@ export const logout =(setUser, setLoggedIn, setLoginPassword, setLoginUsername, 
     setLoginPassword("");
     setLoginUsername("");
     
-
   }
 
   export const registerUser = (async(registerUsername, registerPassword, setRegisterUsername, setRegisterPassword, setBadRegister, navigate) =>
