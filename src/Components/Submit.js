@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { addPost } from "../api";
 
 const Submit = () =>{
 
@@ -10,7 +11,7 @@ const Submit = () =>{
     const [deliver, setDeliver] =useState(false);
 
 
-    const post =(ev) =>
+    const post = async (ev) =>
     {
         ev.preventDefault();
 
@@ -20,33 +21,7 @@ const Submit = () =>{
             return;
         }
 
-       const token = window.localStorage.getItem('token');
-       
-
-       fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/posts', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                post: {
-                title: itemName,
-                description: description,
-                price: `$${price}`,
-                location: location,
-                willDeliver: deliver
-                }
-            })
-        }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-            
-            //reload the page so the post appears
-            window.location.reload();
-        })
-        .catch(console.error);
-
+        await addPost(itemName, description, price, location, deliver);
     }
 
    return <div id="submit">

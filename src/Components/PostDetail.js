@@ -42,7 +42,6 @@ const PostDetail = ({posts, token, setPosts}) =>
                         <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
                     </div>
                     {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
-                    <button onClick={remove}>Delete</button>
                     </div>    
                 </div>
         )

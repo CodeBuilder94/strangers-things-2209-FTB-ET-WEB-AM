@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../api";
 
 
 const Register = (props) =>
@@ -8,39 +9,11 @@ const Register = (props) =>
     const navigate = useNavigate();
     const {registerUsername, registerPassword, setRegisterUsername, setRegisterPassword} =props;
 
-    const  register = (ev) =>{
+    const  register = async (ev) =>{
         
         ev.preventDefault();
-        fetch('https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am/users/register', {
-            method: "POST",
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-            user: {
-                username: registerUsername,
-                password: registerPassword
-            }
-            })
-      }).then(response => response.json())
-        .then(result => {
-
-         if(!result.success){
-            setBadRegister(result.error.message);
-            setRegisterPassword("");
-            setRegisterUsername("");
-            throw result.error;
-          }
-          else{
-            setBadRegister(result.data.message);
-            navigate("/login");
-          }
-          
-        })
-        .catch(err => console.log(err));
-        
+        await registerUser(registerUsername, registerPassword, setRegisterUsername, setRegisterPassword, setBadRegister, navigate);
     }
-
 
 
     //create a form to log in
@@ -48,7 +21,7 @@ const Register = (props) =>
         <form className="login" onSubmit ={register}>
             <input className="InUser" placeholder="Username" value ={registerUsername} onChange ={ev => setRegisterUsername(ev.target.value)}></input>
             <input className="password" placeholder="Password" value={registerPassword} onChange = {ev => setRegisterPassword(ev.target.value)}></input>
-            <button>Submit</button>
+            <button>Register</button>
             <p className="error">{badRegister}</p>
         </form>
         
@@ -57,5 +30,6 @@ const Register = (props) =>
 
 
 }
+
 
 export default Register;
