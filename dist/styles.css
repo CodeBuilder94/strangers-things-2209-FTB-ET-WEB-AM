@@ -161,12 +161,31 @@ form > input{
   color: red;
 }
 
+/*Search Bar*/
+#search > form{
+  border: solid white 1px;
+  border-radius: 15px;
+  padding: 10px 10px;
+  width: 250px;
+}
+#search > h4{
+  margin-bottom: 5px;
+}
+
+#searchForm >input{
+  width: 250px;
+}
+
+#searchForm > button{
+  margin-top: .5rem;
+}
 /*Submit Item*/
 
 #submitDetails{
   display: flex;
   flex-direction: column;
   border: solid white 1px;
+  border-radius: 15px;
   padding: 10px 10px;
   width: 250px;
 }

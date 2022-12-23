@@ -4,8 +4,7 @@ import {Link} from "react-router-dom";
 const Posts = (props) =>
 {
     const {posts, loggedIn} = props;
-    
-
+       
     return <ul>
         {
         posts.map((post) =>{

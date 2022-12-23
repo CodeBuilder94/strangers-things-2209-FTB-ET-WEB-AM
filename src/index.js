@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
-import {Posts, Login, PostDetail, Register, Profile, Submit} from './Components';
+import {Posts, Login, PostDetail, Register, Profile, Submit, Search} from './Components';
 import { getPosts, stayLogged, logout } from './api';
 
 const App = ()=> {
@@ -14,6 +14,7 @@ const App = ()=> {
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   
   
   useEffect(()=> {
@@ -39,7 +40,7 @@ const App = ()=> {
       </div>
       <div className='main'>
       <div className='sidebar'>
-      <div>Search</div>
+      <Search setSearchTerm={setSearchTerm}/>
         {loggedIn ?<Submit /> : null}
       </div>
         <div className='focus'>

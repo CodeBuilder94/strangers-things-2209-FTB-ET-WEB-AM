@@ -50,10 +50,10 @@ const PostDetail = ({posts, setPosts}) =>
                         <p className ="details"><em>Details: </em>{post.description}</p>
                         <p className="price">Price: {post.price}</p>
                         <div className="times">
-                        <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
-                        <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
-                    </div>
-                    {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
+                            <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
+                            <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
+                        </div>
+                        {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
                     </div>    
                     {!post.isAuthor ?<form className="message" onSubmit={message}>
                         <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>
