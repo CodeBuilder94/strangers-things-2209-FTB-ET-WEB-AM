@@ -7,8 +7,16 @@ const Search =({setSearchTerm}) =>
     const goSearch =(ev)=>
     {
         ev.preventDefault();
+        console.log("submit");
         setSearchTerm(item);
 
+    }
+
+    const clear =(ev) =>
+    {
+        ev.preventDefault();
+        console.log("clear");
+        setSearchTerm("");
     }
 
     return(<div id="search">
@@ -16,7 +24,9 @@ const Search =({setSearchTerm}) =>
         <form id="searchForm" onSubmit={goSearch}>
             <input type="text" placeholder="Search here" value={item} onChange={ev =>setItem(ev.target.value)}></input>
             <button>Search</button>
+            <button onClick={clear}>Clear</button>
         </form>
+        
     </div>
         
     )

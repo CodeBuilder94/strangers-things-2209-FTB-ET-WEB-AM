@@ -178,9 +178,11 @@ form > input{
 
 #searchForm > button{
   margin-top: .5rem;
+  margin-right: 1rem;
 }
-/*Submit Item*/
 
+
+/*Submit Item*/
 #submitDetails{
   display: flex;
   flex-direction: column;
