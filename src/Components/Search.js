@@ -15,6 +15,7 @@ const Search =({setSearchTerm}) =>
     {
         ev.preventDefault();
         setSearchTerm("");
+        setItem("");
     }
 
     return(<div id="search">
