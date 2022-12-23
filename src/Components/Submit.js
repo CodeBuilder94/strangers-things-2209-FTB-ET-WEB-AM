@@ -21,7 +21,14 @@ const Submit = ({setPosts}) =>{
             return;
         }
 
-        await addPost(itemName, description, price, location, deliver);
+        await addPost(itemName, description, price, location, deliver, setPosts);
+
+        setItemName("");
+        setDescription("");
+        setPrice("");
+        setLocation("[On Request]");
+        setDeliver(false);
+        
     }
 
    return <div id="submit">

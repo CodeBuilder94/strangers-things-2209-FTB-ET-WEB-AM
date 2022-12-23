@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { editPost } from "../api";
 
-const EditPost =({setToEdit, post}) =>
+const EditPost =({setToEdit, post, setPosts}) =>
 {
 
     const [newDelivery, setNewDelivery] =useState(post.willDeliver);
@@ -11,7 +11,7 @@ const EditPost =({setToEdit, post}) =>
     const edit = async (ev)=>
     {
         ev.preventDefault();
-        await editPost();
+        await editPost(post._id, newDelivery, newDescription, newPrice, setPosts);
         setToEdit(false);
     }
 

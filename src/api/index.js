@@ -147,7 +147,7 @@ export const loginUser = (async(setUser, setLoggedIn, loginUsername, setLoginUse
 
 
 //add a post
-export const addPost = (async(itemName, description, price, location, deliver)=>{
+export const addPost = (async(itemName, description, price, location, deliver,setPosts)=>{
   
   const token = window.localStorage.getItem('token');
   
@@ -169,17 +169,14 @@ export const addPost = (async(itemName, description, price, location, deliver)=>
         }).then(response => response.json())
         .then(result => {
             console.log(result);
-            
-            //reload the page so the post appears
-            window.location.reload();
-            
+            getPosts(setPosts);            
         })
         .catch(console.error);
 })
 
 
 //functions to alter posts
-export async function editPost(id,setPosts)
+export async function editPost(id, newDelivery, newDescription, newPrice, setPosts)
 {
   const token = window.localStorage.getItem('token');
 
@@ -191,16 +188,15 @@ export async function editPost(id,setPosts)
     },
     body: JSON.stringify({
       post: {
-        title: "My favorite stuffed animal",
-        description: "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
-        price: "$480.00",
-        location: "New York, NY",
-        willDeliver: true
+        description: newDescription,
+        price: newPrice,
+        willDeliver: newDelivery
       }
     })
   }).then(response => response.json())
     .then(result => {
       console.log(result);
+      getPosts(setPosts);
     })
     .catch(console.error);
 

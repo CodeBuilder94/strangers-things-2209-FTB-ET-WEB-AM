@@ -64,7 +64,7 @@ const PostDetail = ({posts, setPosts, toEdit, setToEdit}) =>
                         <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>
                         <button>Send Message</button>
                     </form>: null}
-                   {post.isAuthor ? <Messages post={post}/>:null}
+                   {post.isAuthor ? <Messages post={post} setPosts={setPosts}/>:null}
                 </div>
         )
     }

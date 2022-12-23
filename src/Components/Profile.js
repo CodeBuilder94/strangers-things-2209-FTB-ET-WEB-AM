@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Messages, MyMessages, EditPost} from "/";
 import { removePost } from "../api";
@@ -6,6 +6,8 @@ import { removePost } from "../api";
 const Profile =(props) =>{
 
     const {posts, setPosts, user, toEdit, setToEdit} =props;
+
+    const [postId, setpostId] = useState("");
     
     const navigate = useNavigate();
    
@@ -15,10 +17,11 @@ const Profile =(props) =>{
         await removePost(id, navigate, setPosts,"/profile");
     }
 
-    const edit = async (ev) =>
+    const edit = async (ev, id) =>
     {
         ev.preventDefault();
         setToEdit(true);
+        setpostId(id);
     }
 
 
@@ -45,10 +48,12 @@ const Profile =(props) =>{
                             <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                             <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
                         </div>
-                        {post.isAuthor ? <span><button onClick={ev =>remove(ev, post._id)}>Delete</button> <button onClick={edit}>Edit</button></span> : null}
+                        {post.isAuthor ? <button onClick={ev =>remove(ev, post._id)}>Delete</button>: null}
+                        {post.isAuthor && !toEdit ? <button onClick={ev =>edit(ev, post._id)}>Edit</button>:null}
+                        {toEdit && postId === post._id ? <EditPost setToEdit={setToEdit} post={post} setPosts={setPosts}/>: null}
                         </div>
                     </div>
-                    <Messages post={post}/>
+                    <Messages post={post} setPosts={setPosts}/>
                 </li>
                })
             }
