@@ -184,6 +184,12 @@ export async function editPost()
 
 }
 
+//search function
+export const searcher =(post, searchTerm) =>{
+  return (post.title.includes(searchTerm) || post.author.username.includes(searchTerm) ||
+            post.location.includes(searchTerm) || post.description.includes(searchTerm) || post.price.includes(searchTerm));
+}
+
 export async function removePost(id, navigate, setPosts, location)
 {
     const token = window.localStorage.getItem('token');
