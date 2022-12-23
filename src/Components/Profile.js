@@ -53,7 +53,6 @@ const Profile =(props) =>{
                })
             }
         </div>
-        <h2>Inbox</h2>
         <MyMessages user={user}/>
     </div>
 }

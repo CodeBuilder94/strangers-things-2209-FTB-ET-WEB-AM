@@ -232,3 +232,7 @@ form > input{
 .messageList > *{
   margin-left: 1rem;
 }
+
+#sentList{
+  list-style: none;
+}
