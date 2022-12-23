@@ -5,7 +5,7 @@ import { removePost } from "../api";
 
 const Profile =(props) =>{
 
-    const {posts, setPosts, user} =props;
+    const {posts, setPosts, user, toEdit, setToEdit} =props;
     
     const navigate = useNavigate();
    
@@ -18,7 +18,7 @@ const Profile =(props) =>{
     const edit = async (ev) =>
     {
         ev.preventDefault();
-
+        setToEdit(true);
     }
 
 

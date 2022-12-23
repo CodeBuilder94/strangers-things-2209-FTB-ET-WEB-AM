@@ -181,6 +181,28 @@ export const addPost = (async(itemName, description, price, location, deliver)=>
 //functions to alter posts
 export async function editPost(id,setPosts)
 {
+  const token = window.localStorage.getItem('token');
+
+    fetch(`${URL_BASE}${POSTS}/${id}`, {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      post: {
+        title: "My favorite stuffed animal",
+        description: "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
+        price: "$480.00",
+        location: "New York, NY",
+        willDeliver: true
+      }
+    })
+  }).then(response => response.json())
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.error);
 
 }
 

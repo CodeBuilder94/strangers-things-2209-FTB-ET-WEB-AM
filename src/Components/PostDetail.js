@@ -3,7 +3,7 @@ import {useParams, Link, useNavigate} from "react-router-dom";
 import {removePost, sendMessage} from "../api"
 import {Messages, EditPost} from "/";
 
-const PostDetail = ({posts, setPosts}) =>
+const PostDetail = ({posts, setPosts, toEdit, setToEdit}) =>
 {   
     const navigate = useNavigate();
     let id = useParams().id;
@@ -22,6 +22,7 @@ const PostDetail = ({posts, setPosts}) =>
     const edit = async (ev) =>
     {
         ev.preventDefault();
+        setToEdit(true);
 
     }
 
@@ -53,8 +54,11 @@ const PostDetail = ({posts, setPosts}) =>
                             <p className="createDate">Created: {post.createdAt.slice(0,10)} @ {post.createdAt.slice(12,19)}</p>
                             <p className ="updateDate">Updated: {post.updatedAt.slice(0,10)} @ {post.updatedAt.slice(12,19)}</p>
                         </div>
-                        {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
                     </div>    
+                    {post.isAuthor ? <button onClick={remove}>Delete</button>: null}
+                    {post.isAuthor && !toEdit ? <button onClick={edit}>Edit</button>: null}
+                    {toEdit ? <EditPost setToEdit={setToEdit} post={post}/>:null}
+                    
                     {!post.isAuthor ?<form className="message" onSubmit={message}>
                         <h2>Message User:</h2>
                         <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>

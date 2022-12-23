@@ -148,6 +148,10 @@ nav > a{
   margin-right: 1rem;;
 }
 
+.postDetails > button{
+  margin-right: .5rem;
+}
+
 /*Login/Register Page*/
 .login{
   display: flex;
@@ -260,4 +264,40 @@ form > input{
 
 #sentList{
   list-style: none;
+}
+
+/*The Edit field*/
+#editGroup{
+  border: solid black 1px;
+  border-radius: 15px;
+  margin-top: 1rem;
+  width: 550px;
+}
+
+#editGroup > *{
+  margin-left: 1rem;
+}
+
+#editForm{
+  display: flex;
+  flex-direction: column;
+}
+
+#editForm > div{
+  margin-bottom: .5rem;
+}
+
+#editForm > textarea{
+  resize: none;
+  width: 500px;
+  height: 250px;
+}
+
+#newPrice{
+  width: 100px;
+}
+
+#editForm > button{
+  width: 300px;
+  margin-top: .5rem;
 }
