@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
 import {removePost, sendMessage} from "../api"
-import {Messages} from "/";
+import {Messages, EditPost} from "/";
 
 const PostDetail = ({posts, setPosts}) =>
 {   

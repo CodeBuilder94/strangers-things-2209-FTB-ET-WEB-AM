@@ -40,7 +40,7 @@ const App = ()=> {
       </div>
       <div className='main'>
       <div className='sidebar'>
-      <Search setSearchTerm={setSearchTerm}/>
+        {loggedIn ?<Search setSearchTerm={setSearchTerm}/>: null}
         {loggedIn ?<Submit /> : null}
       </div>
         <div className='focus'>

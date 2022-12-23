@@ -1,6 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {Messages, MyMessages} from "/";
+import {Messages, MyMessages, EditPost} from "/";
 import { removePost } from "../api";
 
 const Profile =(props) =>{
@@ -25,7 +25,7 @@ const Profile =(props) =>{
     const myPosts = posts.filter((post) => post.isAuthor)
 
     return <div className="profile">
-        <h1>Profile</h1>
+        <h1>{user.username}'s Profile</h1>
         <h2>My Posts:</h2>
         <div>
             {  

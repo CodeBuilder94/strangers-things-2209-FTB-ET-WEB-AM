@@ -179,7 +179,7 @@ export const addPost = (async(itemName, description, price, location, deliver)=>
 
 
 //functions to alter posts
-export async function editPost()
+export async function editPost(id,setPosts)
 {
 
 }
