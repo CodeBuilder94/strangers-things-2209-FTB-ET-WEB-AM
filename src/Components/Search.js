@@ -7,7 +7,6 @@ const Search =({setSearchTerm}) =>
     const goSearch =(ev)=>
     {
         ev.preventDefault();
-        console.log("submit");
         setSearchTerm(item);
 
     }
@@ -15,7 +14,6 @@ const Search =({setSearchTerm}) =>
     const clear =(ev) =>
     {
         ev.preventDefault();
-        console.log("clear");
         setSearchTerm("");
     }
 

@@ -56,10 +56,11 @@ const PostDetail = ({posts, setPosts}) =>
                         {post.isAuthor ? <span><button onClick={remove}>Delete</button><button onClick={edit}>Edit</button> </span>: null}
                     </div>    
                     {!post.isAuthor ?<form className="message" onSubmit={message}>
+                        <h2>Message User:</h2>
                         <textarea className="messageArea" placeholder="Talk to me..." type="text" value={postMessage} onChange={ev => setPostMessage(ev.target.value)}></textarea>
                         <button>Send Message</button>
                     </form>: null}
-                    <Messages post={post}/>
+                   {post.isAuthor ? <Messages post={post}/>:null}
                 </div>
         )
     }

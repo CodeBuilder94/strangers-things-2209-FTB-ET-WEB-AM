@@ -12,7 +12,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
+}
+
+#webTitle{
+  font-size:40px;
   padding-top: 1.5rem;
 }
 

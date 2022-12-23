@@ -29,7 +29,7 @@ const App = ()=> {
   return (
     <div>
       <div className="Header">
-      <h1>Strangers Things</h1>
+      <h1 id="webTitle">Strangers Things</h1>
       {loggedIn ? <div id='userName'><h3 id ="accountName">{user.username}</h3><div id='icon'><h3>{(user.username.slice(0,1).toUpperCase())}</h3></div></div>:null}
       <nav>
         <Link to='/posts'>Posts ({posts.length})</Link>
@@ -49,7 +49,7 @@ const App = ()=> {
             <Route path='/register' element={ <Register registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} registerUsername={registerUsername} setRegisterUsername={setRegisterUsername}/>} />
             <Route path='/login' element={ <Login loginPassword={loginPassword} loginUsername={loginUsername} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setUser={setUser} setToken={setToken}/>} />
             <Route path = '/profile' element={<div><Profile posts={posts} setPosts={setPosts} user={user}/></div>}/>
-            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn} token={token}/>} />
+            <Route path='/posts' element= {<Posts posts={posts} loggedIn={loggedIn} searchTerm={searchTerm}/>} />
             <Route path="/" element={<Navigate to="/posts" /> /*Make posts the default page*/} />
           </Routes> 
         </div>
