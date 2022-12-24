@@ -14,7 +14,7 @@ const Submit = ({setPosts}) =>{
     const post = async (ev) =>
     {
         ev.preventDefault();
-
+        console.log(ev);
         //check to see if any fields that need items are blank
         if(itemName==="" ||description==="" ||price==="")
         {
@@ -23,29 +23,41 @@ const Submit = ({setPosts}) =>{
 
         await addPost(itemName, description, price, location, deliver, setPosts);
 
+        cleanup();
+        
+    }
+
+    const cleanup =() =>{
         setItemName("");
         setDescription("");
         setPrice("");
         setLocation("[On Request]");
         setDeliver(false);
-        
     }
 
    return <div id="submit">
 
         <h4>Submit Item:</h4>
         <form id="submitDetails" onSubmit={post}>
-            <label>Item Name</label>
-            <input type="text" placeholder="Item Name" value={itemName} onChange={ev => setItemName(ev.target.value)}></input>
-            <label>Description</label>
-            <textarea id="descriptionBox" type="text" placeholder="Description..." value={description} onChange={ev => setDescription(ev.target.value)}></textarea>
-            <label>Price</label>
-            <input type="text" placeholder="Price" value={price} onChange={ev => setPrice(ev.target.value)}></input>
-            <label>Location</label>
-            <input type="text" placeholder="Location" value={location} onChange={ev => setLocation(ev.target.value)}></input><br></br>
+            <>
+                <label>Item Name</label>
+                <input type="text" placeholder="Item Name" value={itemName} onChange={ev => setItemName(ev.target.value)}></input>
+            </>
+            <>
+                <label>Description</label>
+                <textarea id="descriptionBox" type="text" placeholder="Description..." value={description} onChange={ev => setDescription(ev.target.value)}></textarea>
+            </>
+            <>
+                <label>Price</label>
+                <input type="text" placeholder="Price" value={price} onChange={ev => setPrice(ev.target.value)}></input>
+            </>
+            <>
+                <label>Location</label>
+                <input type="text" placeholder="Location" value={location} onChange={ev => setLocation(ev.target.value)}></input><br></br>
+            </>
             <div id="delivery">
                 <label>Will Deliver?</label>
-                <input type={"checkbox"} value={deliver} onChange={ev => setDeliver(ev.target.checked)}></input>
+                <input type={"checkbox"} checked={deliver} onChange={ev => setDeliver(ev.target.checked)}></input>
             </div>
             <button>Submit</button>
         </form>

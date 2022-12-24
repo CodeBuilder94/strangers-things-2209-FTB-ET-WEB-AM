@@ -39,6 +39,10 @@ nav > a{
   padding-bottom: 5px;
 }
 
+button{
+  border-radius: 15px;
+}
+
 /*name dispaly*/
 #username{
   margin-right: 3rem;
@@ -102,7 +106,7 @@ nav > a{
   width: 100%;
 }
 
-.itemPost, button{
+.itemPost{
   border-radius: 15px;
 }
 
@@ -180,6 +184,7 @@ form > input{
   padding: 10px 10px;
   width: 250px;
 }
+
 #search > h4{
   margin-bottom: 5px;
 }
@@ -190,7 +195,7 @@ form > input{
 
 #searchForm > button{
   margin-top: .5rem;
-  margin-right: 1rem;
+  margin-right: .5rem;
 }
 
 
@@ -207,7 +212,6 @@ form > input{
 #submitDetails > button{
   margin-top: .5rem;
   height: 2rem;
-  border-radius: 15px;
 }
 
 #submitDetails > label{
@@ -233,6 +237,10 @@ form > input{
 /*Profile page*/
 .profile{
   margin-left: 1rem;
+}
+
+.summery > button {
+  margin-right: .5rem;
 }
 
 /*The message*/
