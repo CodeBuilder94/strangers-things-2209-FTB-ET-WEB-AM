@@ -4,6 +4,7 @@ const Search =({setSearchTerm}) =>
 {
     //make state to hold the search temporaraly
     const [item, setItem] = useState("");
+    
     const goSearch =(ev)=>
     {
         ev.preventDefault();
