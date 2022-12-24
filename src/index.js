@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
-import {Posts, Login, PostDetail, Register, Profile, Submit, Search, Header} from './Components';
+import { HashRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {Posts, Login, PostDetail, Register, Profile, Sidebar, Header} from './Components';
 import { getPosts, stayLogged} from './api';
 
 const App = ()=> {
@@ -29,10 +29,7 @@ const App = ()=> {
     <div>
       <Header user={user} setUser={setUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setLoginPassword={setLoginPassword} setLoginUsername={setLoginUsername} setToken={setToken} posts={posts}/>
       <div className='main'>
-      <div className='sidebar'>
-        {loggedIn ?<Search setSearchTerm={setSearchTerm}/>: null}
-        {loggedIn ?<Submit setPosts={setPosts}/> : null}
-      </div>
+        <Sidebar loggedIn={loggedIn} setPosts={setPosts} setSearchTerm={setSearchTerm}/>
         <div className='focus'>
           <Routes>
             <Route path ='/posts/:id' element={<div><PostDetail posts={posts} setPosts={setPosts} toEdit={toEdit} setToEdit={setToEdit}/></div>}/>

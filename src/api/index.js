@@ -4,11 +4,7 @@ const URL_BASE =`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-am`;
   const URL_REGISTER = `/users/register`;
   const LOGIN = `/users/login`;
   const ME_URL =`/users/me/`;
-  
 
-  //test URLS
-  const TEST_ME = `/test/me`;
-  const TEST_DATA = `/test/data`;
 
 export const getPosts = (async(setPosts)=>
 {

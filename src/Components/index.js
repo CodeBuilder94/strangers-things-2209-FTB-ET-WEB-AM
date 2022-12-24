@@ -9,3 +9,4 @@ export {default as MyMessages} from "./MyMessages"
 export {default as Search} from "./Search"
 export {default as EditPost} from "./EditPost";
 export {default as Header} from "./Header";
+export {default as Sidebar} from "./Sidebar";
