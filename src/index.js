@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
-import {Posts, Login, PostDetail, Register, Profile, Submit, Search} from './Components';
+import {Posts, Login, PostDetail, Register, Profile, Submit, Search,} from './Components';
 import { getPosts, stayLogged, logout } from './api';
 
 const App = ()=> {
