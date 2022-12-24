@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../api";
 
 
-const Register = (props) =>
+const Register = () =>
 {   
     const [badRegister, setBadRegister] = useState("");
+    const [registerUsername, setRegisterUsername] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+
     const navigate = useNavigate();
-    const {registerUsername, registerPassword, setRegisterUsername, setRegisterPassword} =props;
+    //const {registerUsername, registerPassword, setRegisterUsername, setRegisterPassword} =props;
 
     const  register = async (ev) =>{
         
