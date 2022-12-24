@@ -57,7 +57,7 @@ const PostDetail = ({posts, setPosts, toEdit, setToEdit}) =>
                     </div>    
                     {post.isAuthor ? <button onClick={remove}>Delete</button>: null}
                     {post.isAuthor && !toEdit ? <button onClick={edit}>Edit</button>: null}
-                    {toEdit ? <EditPost setToEdit={setToEdit} post={post}/>:null}
+                    {toEdit ? <EditPost setToEdit={setToEdit} post={post} setPosts={setPosts}/>:null}
                     
                     {!post.isAuthor ?<form className="message" onSubmit={message}>
                         <h2>Message User:</h2>
