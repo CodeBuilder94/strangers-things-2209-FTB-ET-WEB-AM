@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const MyMessages = ({user}) =>
 {
@@ -22,7 +24,7 @@ const MyMessages = ({user}) =>
                 {
                   messages.map((message, idx) =>{
                         return <li key={idx} className="messageList">
-                            <h3>{message.post.title}</h3>
+                            <h3><Link to={`/posts/:${message.post._id}`}>{message.post.title}</Link></h3>
                             <p>"{message.content}"</p>
                             </li>
                     })
