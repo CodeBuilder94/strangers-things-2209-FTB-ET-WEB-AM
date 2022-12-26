@@ -24,8 +24,8 @@ const MyMessages = ({user}) =>
                 {
                   messages.map((message, idx) =>{
                         return <li key={idx} className="messageList">
-                            <h3><Link to={`/posts/:${message.post._id}`}>{message.post.title}</Link></h3>
-                            <p>"{message.content}"</p>
+                                <h3><Link to={`/posts/:${message.post._id}`}>{message.post.title}</Link></h3>
+                                <p>"{message.content}"</p>
                             </li>
                     })
                 }
