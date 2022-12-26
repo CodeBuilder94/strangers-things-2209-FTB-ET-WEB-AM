@@ -28,6 +28,7 @@ export const stayLogged =(async(setToken, setLoggedIn, setUser) => {
 
     if(token)
     {
+      
         fetch(`${URL_BASE}${ME_URL}`, {
           headers: {
             'Content-Type': 'application/json',
@@ -43,6 +44,14 @@ export const stayLogged =(async(setToken, setLoggedIn, setUser) => {
             })
             .catch(err => console.log(err));
     }
+    else if(token === undefined)
+    {
+      window.localStorage.removeItem('token')
+      setLoggedIn(false);
+      setUser({});
+      setToken(null);
+    }
+
 }) 
 
 
